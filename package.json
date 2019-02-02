@@ -1,0 +1,28 @@
+{
+  "name": "basic-ts-webpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "dependencies": {
+    "copy-webpack-plugin": "^4.6.0",
+    "css-loader": "^1.0.0",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.3",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "ts-loader": "^4.4.1",
+    "typescript": "^2.9.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  },
+  "scripts": {
+    "dev": "webpack -d --watch",
+    "prod": "webpack -p"
+  },
+  "author": "Jakub Maksimowicz",
+  "license": "MIT",
+  "devDependencies": {
+    "web-ext-types": "^3.1.0"
+  }
+}
