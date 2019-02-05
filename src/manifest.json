@@ -19,6 +19,14 @@
   "name": "blindify",
   "version": "1.0",
   "description": "Simulates being blind, forcing you to use screen reader to navigate through web",
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Alt+B"
+      },
+      "description": "Change blind state"
+    }
+  },
   "icons": {
     "48": "icons/yellow-48.png"
   },
