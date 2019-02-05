@@ -1,6 +1,6 @@
 {
   "name": "basic-ts-webpack",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "",
   "main": "index.ts",
   "dependencies": {
@@ -20,7 +20,7 @@
     "dev": "webpack -d --watch",
     "prod": "webpack -p"
   },
-  "author": "Jakub Maksimowicz",
+  "author": "Wojciech Połowniak",
   "license": "MIT",
   "devDependencies": {
     "web-ext-types": "^3.1.0"

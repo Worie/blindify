@@ -38,14 +38,12 @@ class BlindifyBackground {
   private handleUpdate(tabId: number, info: object, tab: browser.tabs.Tab): void {
     const ref = this.getSimplifiedFingerprint(tab.id, tab.windowId);
 
-    browser.tabs.sendMessage(tab.id, {
-      command: 'blindify',
-      state: this.stateMap.get(ref),
-    });
+    this.sendMessage(tab.id, this.stateMap.get(ref));
   }
   private handleTabCreate(tab: browser.tabs.Tab): void {
     this.stateMap.set(this.getSimplifiedFingerprint(tab.id, tab.windowId), this.state);
     this.update(this.state, tab.id);
+    this.sendMessage(tab.id, this.state);
   }
   
   private handleTabRemove(tab: browser.tabs.Tab): void {
@@ -57,19 +55,22 @@ class BlindifyBackground {
     const currentState = this.stateMap.get(ref);
     this.state = currentState;
     this.stateMap.set(ref, !this.state);
-    
+  
     this.update(!this.state, tab.id);
+    this.sendMessage(tab.id, !this.state);
+  }
 
-    browser.tabs.sendMessage(tab.id, {
+  public sendMessage(tab: number, state: boolean) {
+    browser.tabs.sendMessage(tab, {
+      state,
       command: 'blindify',
-      state: !this.state,
     });
   }
 
   public handleTabChange(payload: BrowserTabFingerpring): void {
-    // this.state = this.isActivated();
     const tabRef = this.getSimplifiedFingerprint(payload.tabId, payload.windowId);
     const state = this.stateMap.get(tabRef);
+    this.state = state;
     this.update(state, payload.tabId);
   }
 
