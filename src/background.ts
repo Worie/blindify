@@ -58,7 +58,7 @@ class BlindifyBackground {
     this.state = currentState;
     this.stateMap.set(ref, !this.state);
     
-    this.update(!this.state, tab.id,);
+    this.update(!this.state, tab.id);
 
     browser.tabs.sendMessage(tab.id, {
       command: 'blindify',
@@ -70,14 +70,14 @@ class BlindifyBackground {
     // this.state = this.isActivated();
     const tabRef = this.getSimplifiedFingerprint(payload.tabId, payload.windowId);
     const state = this.stateMap.get(tabRef);
-    this.update(state, payload.tabId,);
+    this.update(state, payload.tabId);
   }
 
   public update(state: boolean, tabId: number = null): void {
     browser.browserAction.setTitle({
       tabId,
       title: state ? 'Blindify enabled' : 'Blindify disabled',
-    }); 
+    });
 
     browser.browserAction.setIcon({
       tabId,
